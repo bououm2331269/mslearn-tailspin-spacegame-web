@@ -3,8 +3,6 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-20.04'
-  demands:
-  - npm
 
 variables:
   buildConfiguration: 'Release'
@@ -20,6 +18,8 @@ steps:
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
+    command: 'install'   # explicite, selon ta version de task
+    workingDir: '$(wwwrootDir)'
     verbose: false
 
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
@@ -27,6 +27,10 @@ steps:
 
 - task: gulp@1
   displayName: 'Run gulp tasks'
+  inputs:
+    gulpFile: 'gulpfile.js'
+    targets: 'default'
+    enableCodeCoverage: false
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
@@ -56,4 +60,8 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
   condition: succeeded()
