@@ -22,8 +22,12 @@ steps:
   inputs:
     verbose: false
 
-- script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
+- task: Npm@1
   displayName: 'Compile Sass assets'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build-css'
+
 
 - task: gulp@1
   displayName: 'Run gulp tasks'
