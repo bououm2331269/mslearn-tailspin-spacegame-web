@@ -22,9 +22,9 @@ steps:
     versionSpec: '5.9.1'
 
 - task: NodeTool@0
-  displayName: 'Use Node 14.x'
+  displayName: 'Use Node 18.x'
   inputs:
-    versionSpec: '14.x'
+    versionSpec: '18.x'
 
 - task: Npm@1
   displayName: 'Run npm install'
@@ -33,7 +33,7 @@ steps:
     workingDir: 'Tailspin.SpaceGame.Web'
     verbose: false
 
-- script: './node_modules/.bin/sass wwwroot --output wwwroot'
+- script: 'npx sass wwwroot:wwwroot'
   displayName: 'Compile Sass assets'
   workingDirectory: 'Tailspin.SpaceGame.Web'
 
