@@ -38,7 +38,6 @@ steps:
   inputs:
     command: 'custom'
     workingDir: 'Tailspin.SpaceGame.Web'
-    customCommand: 'npm install node-sass@4.14.1 --no-save'
 
 - script: './node_modules/.bin/node-sass wwwroot --output wwwroot'
   displayName: 'Compile Sass assets'
