@@ -37,16 +37,6 @@ steps:
   displayName: 'Compile Sass assets'
   workingDirectory: 'Tailspin.SpaceGame.Web'
 
-- task: Gulp@1
-  displayName: 'Run gulp tasks'
-  inputs:
-    gulpFile: 'Tailspin.SpaceGame.Web/gulpfile.js'
-    workingDirectory: 'Tailspin.SpaceGame.Web'
-
-- script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
-  displayName: 'Write build info'
-  workingDirectory: $(wwwrootDir)
-
 - task: NuGetCommand@2
   displayName: 'Restore project dependencies'
   inputs:
