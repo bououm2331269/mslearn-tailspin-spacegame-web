@@ -33,6 +33,13 @@ steps:
     workingDir: 'Tailspin.SpaceGame.Web'
     verbose: false
 
+- task: Npm@1
+  displayName: 'Ensure node-sass installed'
+  inputs:
+    command: 'custom'
+    workingDir: 'Tailspin.SpaceGame.Web'
+    customCommand: 'npm install node-sass@4.14.1 --no-save'
+
 - script: './node_modules/.bin/node-sass wwwroot --output wwwroot'
   displayName: 'Compile Sass assets'
   workingDirectory: 'Tailspin.SpaceGame.Web'
