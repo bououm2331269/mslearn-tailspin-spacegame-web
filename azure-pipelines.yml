@@ -46,6 +46,10 @@ steps:
   inputs:
     command: 'restore'
     projects: 'Tailspin.SpaceGame.Web.sln'
+    feedsToUse: 'select'
+    vstsFeed: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
+    includeNuGetOrg: true
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
