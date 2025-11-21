@@ -33,7 +33,7 @@ steps:
     workingDir: 'Tailspin.SpaceGame.Web'
     verbose: false
 
-- script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
+- script: './node_modules/.bin/node-sass wwwroot --output wwwroot'
   displayName: 'Compile Sass assets'
   workingDirectory: 'Tailspin.SpaceGame.Web'
 
